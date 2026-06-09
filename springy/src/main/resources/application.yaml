@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: springy
+
+app:
+  page-size: 10
