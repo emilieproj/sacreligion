@@ -1,16 +1,42 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
-import SecretPassword from "../components/SecretPassword";
+
+const BASE = import.meta.env.BASE_URL;
 
 export default function Home() {
+  const [input, setInput] = useState("");
+  const navigate = useNavigate();
+
+  const submit = () => {
+    if (input === "sacreligious") {
+      navigate("/secret");
+    }
+  };
+
   return (
     <>
+      {/* background video */}
       <video autoPlay muted loop playsInline className="background-video">
-        <source src="/background.mp4" type="video/mp4" />
+        <source src={BASE + "background.mp4"} />
       </video>
 
+      {/* logo */}
       <div className="center-content">
-        <img src="/src/assets/logo.png" alt="Sacreligion" className="logo" />
-        <SecretPassword />
+        <img src={BASE + "logo.png"} className="logo" />
+      </div>
+
+      {/* password UI */}
+      <div className="secret-container">
+        <h1>Do you know the password?</h1>
+
+        <input
+          type="password"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+
+        <button onClick={submit}>Enter</button>
       </div>
 
       <Footer />

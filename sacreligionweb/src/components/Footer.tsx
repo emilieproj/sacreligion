@@ -1,11 +1,13 @@
 import "./Footer.css";
 
+const BASE = import.meta.env.BASE_URL;
+
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-left">
         <img
-          src="/imagelogo.png"
+          src={BASE + "imagelogo.png"}
           alt="Logo"
           className="footer-logo"
         />
